@@ -33,8 +33,8 @@ jobs:
           docker buildx build --platform linux/amd64,linux/arm64 -t gitkeeper05/wanttotestendtoendcicd:latest --push .
 
       # Set SSH Public Key as a Terraform Variable -> this will make it available for pipepline env
-      - name: Set SSH Public Key for Terraform
-        run: echo "ssh_public_key=${{ secrets.AWS_SSH_PUBLIC_KEY }}" >> $GITHUB_ENV
+      #- name: Set SSH Public Key for Terraform
+      #  run: echo "ssh_public_key=${{ secrets.AWS_SSH_PUBLIC_KEY }}" >> $GITHUB_ENV
       #Install terra form on brum brum
       - name: Setting up Terraform
         uses: hashicorp/setup-terraform@v3
