@@ -70,10 +70,10 @@ jobs:
 
       # Plan Terraform deployment
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: terraform plan
 
       # Apply Terraform configuration
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        run: terraform apply -auto-approve
         env:
           TF_VAR_ssh_public_key: ${{ secrets.ssh_public_key }}
