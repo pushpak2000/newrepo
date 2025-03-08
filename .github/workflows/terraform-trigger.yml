@@ -61,13 +61,11 @@ jobs:
           chmod +x terraform-login.sh
           ./terraform-login.sh
 
-      - name: Configure AWS credentials
+      - name: Configure AWS CLI
         run: |
-          mkdir -p ~/.aws  # Create the directory if it doesn't exist
-          echo "[default]" > ~/.aws/credentials
-          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
-          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
-          echo "region=us-west-2" >> ~/.aws/config
+          aws configure set aws_access_key_id "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          aws configure set aws_secret_access_key "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          aws configure set region "eu-west-1"
 
       # Initialize Terraform
       - name: Terraform Init
