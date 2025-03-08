@@ -70,7 +70,7 @@ jobs:
       # Initialize Terraform
       - name: Terraform Init
         run: terraform init
-
+      # Remove the terraform apply --> bcz it doesnt support via CLI
       # Validate Terraform configuration
       #- name: Terraform Validate
       #  run: terraform validate
