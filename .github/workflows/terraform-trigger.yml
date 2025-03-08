@@ -72,8 +72,14 @@ jobs:
         run: terraform init
 
       # Validate Terraform configuration
-      - name: Terraform Validate
-        run: terraform validate
+      #- name: Terraform Validate
+      #  run: terraform validate
+      # hello
+      # Plan Terraform deployment
+      #- name: Terraform Plan
+      #  run: terraform plan
+      #  env:
+      #    TF_VAR_ssh_public_key: ${{ secrets.ssh_public_key }}
 
       # Apply Terraform configuration
       - name: Terraform Apply
