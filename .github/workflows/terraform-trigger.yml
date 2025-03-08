@@ -61,6 +61,12 @@ jobs:
           chmod +x terraform-login.sh
           ./terraform-login.sh
 
+      - name: Configure AWS credentials
+        run: |
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
+
       # Initialize Terraform
       - name: Terraform Init
         run: terraform init
