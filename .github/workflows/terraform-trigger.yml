@@ -82,7 +82,15 @@ jobs:
       #    TF_VAR_ssh_public_key: ${{ secrets.ssh_public_key }}
 
       # Apply Terraform configuration
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
-        env:
-          TF_VAR_ssh_public_key: ${{ secrets.ssh_public_key }}
+      #- name: Terraform Apply
+      #  run: terraform apply -auto-approve
+      #  env:
+      #    TF_VAR_ssh_public_key: ${{ secrets.ssh_public_key }}
+      - name: Trigger Terraform Cloud Apply
+        run: |
+          curl \
+          --request POST \
+          --header "Authorization: Bearer ${{ secrets.TERRAFORM_CLOUD_TOKEN }}" \
+          --header "Content-Type: application/json" \
+          --data '{"force_run":true}' \
+          https://app.terraform.io/api/v2/workspaces/${{ secrets.TERRAFORM_CLOUD_WORKSPACE_ID }}/actions/apply
