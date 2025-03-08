@@ -3,7 +3,7 @@ name: Terraform CI/CD Pipeline with Docker Image
 on:
   push:
     branches:
-      - master # Trigger on push to the 'main' branch
+      - main # Trigger on push to the 'main' branch
 
 jobs:
   terraform:
