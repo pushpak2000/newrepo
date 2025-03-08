@@ -78,7 +78,7 @@ jobs:
       # Plan Terraform deployment
       #- name: Terraform Plan
       #  run: terraform plan
-      #  env:
+      #  env:##
       #    TF_VAR_ssh_public_key: ${{ secrets.ssh_public_key }}
 
       # Apply Terraform configuration
